@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script defer src="UserDetails.js"></script>
+    <style>
+        body {
+        display: flex;
+        flex-direction :column ;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+       height: 100vh;
+    }
+    h2{
+        font-size: 8rem;
+    }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">שלום </h1>
+    <h1>התחברת בהצלחה</h1>
+    <h1>בואו נצלול פנימה</h1>
+    <h2>✅</h1>
+
+    <button class="updateDetails" onclick="writeTheUser()">לעידכון פרטים</button>
+
+    <div class="details" style="display:none">
+        <label for="firstName">Enter FirstName</label>
+        <input type="text" id="firstName" />
+        <br />
+        <label for="lastName">Enter LastName</label>
+        <input type="text" id="lastName" />
+        <br />
+        <label for="email">Enter Email</label>
+        <input type="email" id="email" />
+        <br />
+        <label for="password">Enter Password</label>
+        <input type="password" id="password" />
+        <br />
+        
+        <br />
+        <button onclick="put()">Set</button>
+    </div>
+</body>
+</html>

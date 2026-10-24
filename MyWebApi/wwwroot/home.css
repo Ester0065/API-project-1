@@ -1,0 +1,38 @@
+﻿body {
+    display: grid;
+    place-content: center;
+    width: 100vw;
+}
+
+.a {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.sign {
+    background-color: rosybrown;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+}
+
+.get {
+    background-color: rosybrown;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: burlywood;
+    display: grid;
+    place-content: center;
+}
+
+button {
+    width: 100px;
+}
