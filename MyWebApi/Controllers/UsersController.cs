@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using System.Runtime.Intrinsics.Arm;
+//fix: Removed "using System.Runtime.Intrinsics.Arm;" - it was added by mistake and is not used
 
 
 // For more informati on on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,7 +11,8 @@ namespace MyWebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        static string filePath = "Users.txt";
+        //fix: The path never changes, so it can be readonly
+        static readonly string filePath = "Users.txt";
         // GET: api/<Users>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -32,7 +33,8 @@ namespace MyWebApi.Controllers
                     {
                         User user = JsonSerializer.Deserialize<User>(currentUserInFile);
                         if (user.id == id)
-                            return CreatedAtAction(nameof(Get), new { id = user.id },user);
+                            //fix: GET only reads, so it returns 200 Ok and not 201 Created
+                            return Ok(user);
                 }
             } 
 
@@ -77,6 +79,9 @@ namespace MyWebApi.Controllers
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
+        //The route has {id}, but the method doesn't use it: add int id as a parameter, look for the user
+        //with this id, and set userToUpdate.id = id before saving.
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put( [FromBody] User userToUpdate)
         {
             string textToReplace = string.Empty;
@@ -89,7 +94,11 @@ namespace MyWebApi.Controllers
                     User user =
                     JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.id == userToUpdate.id)
+                    {
                         textToReplace = currentUserInFile;
+                        //fix: Found- break
+                        break;
+                    }
                 }
             }
             

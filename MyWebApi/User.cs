@@ -2,6 +2,9 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    //In C#, public properties are written in PascalCase (FirstName, LastName, Email, Password, Id).
+    //If you rename them, Users.txt still has the old names, so read it with
+    //new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
     public class User
     {
        
