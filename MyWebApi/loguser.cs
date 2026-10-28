@@ -2,6 +2,8 @@
 
 namespace MyWebApi
 {
+    //In C#, class names are written in PascalCase, and a full name is clearer: LoginUser (in LoginUser.cs).
+    //Properties too: Email, Password
     public class loguser
     {
         //[EmailAddress]
