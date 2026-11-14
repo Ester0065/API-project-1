@@ -6,6 +6,7 @@
     {
        
        // [Required]
+        //In C#, public properties are PascalCase (FirstName). Keep the stored names: System.Text.Json is case-sensitive, so use the PropertyNameCaseInsensitive option when reading the file
         public string firstName { get; set; }
       //  [Required]
         public string lastName { get; set; }
