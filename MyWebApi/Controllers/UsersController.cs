@@ -9,6 +9,7 @@ namespace MyWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //The assignment asks to split the code into four projects: the API, Entities, Services and Repositories
     public class UsersController : ControllerBase
     {
         static string filePath = "Users.txt";
@@ -32,6 +33,7 @@ namespace MyWebApi.Controllers
                     {
                         User user = JsonSerializer.Deserialize<User>(currentUserInFile);
                         if (user.id == id)
+                            //GET by id returns 201 Created here, but the assignment asks for 200: which result returns the found user with 200?
                             return CreatedAtAction(nameof(Get), new { id = user.id },user);
                 }
             } 
@@ -77,6 +79,7 @@ namespace MyWebApi.Controllers
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put( [FromBody] User userToUpdate)
         {
             string textToReplace = string.Empty;
