@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+//This using isn't used in this file: you can remove it
 using System.Runtime.Intrinsics.Arm;
 
 
@@ -9,6 +10,7 @@ namespace MyWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //The assignment asks to split the code into four projects: the API, Entities, Services and Repositories
     public class UsersController : ControllerBase
     {
         static string filePath = "Users.txt";
@@ -41,6 +43,7 @@ namespace MyWebApi.Controllers
         
         // POST api/<Users>
         [HttpPost]
+        //The assignment asks to refuse a weak password (score below 3) with 400: where should the password service be called here? Its interface is not in the project yet
         public ActionResult<User> Post([FromBody] User user)
         {
             
@@ -77,6 +80,7 @@ namespace MyWebApi.Controllers
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put( [FromBody] User userToUpdate)
         {
             string textToReplace = string.Empty;
@@ -93,6 +97,7 @@ namespace MyWebApi.Controllers
                 }
             }
             
+                //The assignment asks PUT with a weak password (score below 3) to return 400: where should the password strength check be called?
                 if(textToReplace != string.Empty)
                 {
                 string text = System.IO.File.ReadAllText(filePath);

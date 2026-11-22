@@ -5,6 +5,7 @@ const updateDetails=document.querySelector(".updateDetails")
 const details=document.querySelector(".details")
 
 
+//In JavaScript, variables are written in camelCase: user
 const User = sessionStorage.getItem("CurrentUser")
 const nameUser1 = JSON.parse(User).firstName;
 const lastName1 = JSON.parse(User).lastName;
